@@ -10,6 +10,9 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then take up to
         // the next )
         int currentIndex = 0;
+        markdown = markdown.replace("\n(","\n[");
+        markdown = markdown.replace(")(","](");
+        System.out.println(markdown);
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
@@ -25,8 +28,11 @@ public class MarkdownParse {
     public static void main(String[] args) throws IOException {
 		Path fileName = Path.of(args[0]);
 	    String contents = Files.readString(fileName);
-        System.out.println(contents);
+        //System.out.println(contents);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
     }
+    //[error](error.com)
+    //[error](error.com)
+
 }
