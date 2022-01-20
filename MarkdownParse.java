@@ -12,6 +12,21 @@ public class MarkdownParse {
         int currentIndex = 0;
         markdown = markdown.replace("\n(","\n[");
         markdown = markdown.replace(")(","](");
+        //for when there aren't parentheses around the link
+        if(markdown.indexOf("]",currentIndex)!= markdown.indexOf("](",currentIndex)) {
+            //when there isn't parentheses starting the link
+            markdown = markdown.replace("]","](");
+        }
+        if(markdown.trim().charAt(markdown.trim().length()-1) != ')') {
+            markdown = markdown.trim() + ")";
+        }
+        else if(!markdown.substring(currentIndex,markdown.indexOf("\n")).trim().endsWith(")")) {
+            markdown = markdown.substring(0,currentIndex) + 
+            markdown.substring(currentIndex,markdown.indexOf("\n")).trim() + ")" +
+            markdown.substring(markdown.indexOf("\n",currentIndex));
+
+        }
+
         System.out.println(markdown);
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
