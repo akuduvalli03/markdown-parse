@@ -41,7 +41,7 @@ public class MarkdownParseTest {
     @Test 
     public void purposefullyFailedTest() throws IOException {
         assertEquals(List.of("error.com"), 
-            MarkdownParse3.getLinks(getContents("testfiles/test-case1.md")));
+            MarkdownParse3.getLinks(getContents("testfiles/failing-test.md")));
     }
 
     //Tests from Joe's new repos
