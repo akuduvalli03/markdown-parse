@@ -30,6 +30,7 @@ public class MarkdownParse3 {
             stopCharacters.add('[');
             stopCharacters.add(']');
             stopCharacters.add('\n');
+            stopCharacters.add(' ');
             while(startIndex >= 0) {
                 if(stopCharacters.contains(markdown.charAt(startIndex))) {
                     startIndex++;
