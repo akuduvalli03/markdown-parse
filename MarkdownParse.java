@@ -10,6 +10,7 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then take up to
         // the next )
         int currentIndex = 0;
+        /*
         markdown = markdown.replace("\n(","\n[");
         markdown = markdown.replace(")(","](");
         //for when there aren't parentheses around the link
@@ -27,7 +28,7 @@ public class MarkdownParse {
 
         }
 
-        System.out.println(markdown);
+        System.out.println(markdown);*/
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
