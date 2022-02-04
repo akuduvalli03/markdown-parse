@@ -40,7 +40,7 @@ public class MarkdownParseTest {
 
     @Test 
     public void purposefullyFailedTest() throws IOException {
-        assertEquals(List.of("error.com"), 
+        assertEquals(List.of("error.com","something.com"), 
             MarkdownParse3.getLinks(getContents("testfiles/failing-test.md")));
     } 
 
