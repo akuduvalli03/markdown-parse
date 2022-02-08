@@ -10,9 +10,9 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then take up to
         // the next )
         int currentIndex = 0;
-        /*
+        
         markdown = markdown.replace("\n(","\n[");
-        markdown = markdown.replace(")(","](");
+        markdown = markdown.replace(")(","]("); /*
         //for when there aren't parentheses around the link
         if(markdown.indexOf("]",currentIndex)!= markdown.indexOf("](",currentIndex)) {
             //when there isn't parentheses starting the link
