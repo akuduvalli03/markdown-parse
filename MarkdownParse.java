@@ -29,20 +29,47 @@ public class MarkdownParse {
         System.out.println(markdown);*/
 
 
-        markdown = markdown.replace("\n(","\n[");
-        markdown = markdown.replace(")(","](");  
         
         while(currentIndex < markdown.length()) {
-            int nextOpenBracket = markdown.indexOf("[", currentIndex);
-            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
-            int openParen = markdown.indexOf("(", nextCloseBracket);
-            int closeParen = markdown.indexOf(")", openParen);
+            /*int nextOpenBracket = markdown.indexOf("[", currentIndex);
+            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);*/
+            int nextOpenBracket = indexOfTheFollowing(markdown, currentIndex);
+            //System.out.println(nextOpenBracket);
+            int nextCloseBracket = indexOfTheFollowing(markdown, nextOpenBracket+1);
+            System.out.println(nextCloseBracket);
+            int openParen = markdown.indexOf("(", nextCloseBracket+1);
+            int closeParen = markdown.indexOf(")", openParen+1);
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
-            System.out.println(currentIndex);
             
         }
         return toReturn;
+    }
+
+    /** finds the indexOf one of the following enclosers, whichever comes first. 
+     * @param str searching through str
+     * @param start to search after
+     * @return the index, -1 if none in str. 
+     */
+    public static int indexOfTheFollowing(String str, int start) {
+        ArrayList<String> linkLabelEnclosers = new ArrayList<String>();
+        linkLabelEnclosers.add("(");
+        linkLabelEnclosers.add("]");
+        linkLabelEnclosers.add("[");
+        linkLabelEnclosers.add(")");
+        int firstIndex = str.length();
+        for(int i = 0;i<linkLabelEnclosers.size();i++) {
+            int temp = str.indexOf(linkLabelEnclosers.get(i),start);
+            System.out.println(temp);
+            if(temp != -1 && temp < firstIndex) {
+                firstIndex = temp;
+            }
+        }
+        System.out.println();
+        if(firstIndex == str.length())
+            return -1; //no results
+        return firstIndex;
+
     }
     public static void main(String[] args) throws IOException {
 		Path fileName = Path.of(args[0]);
