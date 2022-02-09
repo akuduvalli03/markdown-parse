@@ -37,8 +37,10 @@ public class MarkdownParse {
             //System.out.println(nextOpenBracket);
             int nextCloseBracket = indexOfTheFollowing(markdown, nextOpenBracket+1);
             System.out.println(nextCloseBracket);
-            int openParen = markdown.indexOf("(", nextCloseBracket+1);
-            int closeParen = markdown.indexOf(")", openParen+1);
+            /*int openParen = markdown.indexOf("(", nextCloseBracket+1);
+            int closeParen = markdown.indexOf(")", openParen+1);*/
+            int openParen = indexOfTheFollowing(markdown, nextCloseBracket+1);
+            int closeParen = indexOfTheFollowing(markdown, openParen+1);
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
             
@@ -60,7 +62,6 @@ public class MarkdownParse {
         int firstIndex = str.length();
         for(int i = 0;i<linkLabelEnclosers.size();i++) {
             int temp = str.indexOf(linkLabelEnclosers.get(i),start);
-            System.out.println(temp);
             if(temp != -1 && temp < firstIndex) {
                 firstIndex = temp;
             }
