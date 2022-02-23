@@ -2,7 +2,7 @@
 
 # case 1
 
-[hi]thiswillbreak.com
+[hi.]thiswillbreak.com
 
 # case 2
 
