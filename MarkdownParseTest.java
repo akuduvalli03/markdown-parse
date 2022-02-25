@@ -12,6 +12,13 @@ public class MarkdownParseTest {
     public void addition() {
         assertEquals(2, 1 + 1);
     }
+    
+    @Test
+    public void testLabFile3() throws IOException {
+        Path fileName = Path.of("testfiles/labtest3.md");
+        String contents = Files.readString(fileName);
+        assertEquals(List.of("https://ucsd-cse15l-w22.github.io/"), MarkdownParse3.getLinks(contents));
+    }
 
     @Test
     public void testLabFile2() throws IOException {
