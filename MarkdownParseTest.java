@@ -15,6 +15,13 @@ public class MarkdownParseTest {
 
     @Test
     public void testLabFile1() throws IOException {
+        Path fileName = Path.of("testfiles/labtest2.md");
+        String contents = Files.readString(fileName);
+        assertEquals(List.of("a.com","a.com(())", "example.com"), MarkdownParse3.getLinks(contents));
+    }
+
+    @Test
+    public void testLabFile1() throws IOException {
         Path fileName = Path.of("testfiles/labtest1.md");
         String contents = Files.readString(fileName);
         assertEquals(List.of("google.com","google.com", "ucsd.edu"), MarkdownParse3.getLinks(contents));
